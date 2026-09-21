@@ -1,4 +1,3 @@
-
 const MY_EMAIL = 'vignes016@gmail.com';
 
 
@@ -30,7 +29,9 @@ themeBtn.addEventListener('click', () => {
 });
 
 
-
+/* ---------------------------------------------------
+   2. Navbar border after scrolling
+   --------------------------------------------------- */
 const nav = document.getElementById('mainNav');
 
 function checkScroll() {
@@ -41,7 +42,9 @@ window.addEventListener('scroll', checkScroll, { passive: true });
 checkScroll();
 
 
-
+/* ---------------------------------------------------
+   3. Close the mobile menu after clicking a link
+   --------------------------------------------------- */
 const navMenu = document.getElementById('navMenu');
 
 document.querySelectorAll('#navMenu .nav-link').forEach((link) => {
@@ -53,8 +56,10 @@ document.querySelectorAll('#navMenu .nav-link').forEach((link) => {
 });
 
 
-
-  const form = document.getElementById('contactForm');
+/* ---------------------------------------------------
+   4. Contact form (opens the visitor's email app)
+   --------------------------------------------------- */
+const form = document.getElementById('contactForm');
 const formNote = document.getElementById('formNote');
 
 form.addEventListener('submit', (event) => {

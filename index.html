@@ -1,41 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="light">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Vignesh A | Java Full Stack Developer</title>
-  <meta name="description" content="Portfolio of Vignesh A, a Java Full Stack Developer from Chennai working with Spring Boot, Spring Security, Hibernate/JPA, PostgreSQL and Docker.">
+  <meta name="description" content="Portfolio of Vignesh A, a Java Full Stack Developer building Spring Boot applications with PostgreSQL, REST APIs and Docker.">
 
-  <!-- set the theme before the page paints so dark mode doesn't flash white -->
+  <!-- Picks the saved theme before the page paints, so there is no flash of the wrong theme -->
   <script>
     (function () {
-      var saved = null;
-      try { saved = localStorage.getItem('theme'); } catch (e) {}
-      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      document.documentElement.setAttribute('data-bs-theme', saved || (prefersDark ? 'dark' : 'light'));
+      var theme = 'light';
+      try {
+        theme = localStorage.getItem('theme') ||
+                (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      } catch (err) { /* storage blocked, keep light */ }
+      document.documentElement.setAttribute('data-bs-theme', theme);
     })();
   </script>
 
-  <!-- fonts -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&display=swap" rel="stylesheet">
 
-  <!-- bootstrap -->
+  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- my styles (loaded after bootstrap so they can override it) -->
-  <link rel="stylesheet" href="style.css">
+  <!-- Your styles (must come after Bootstrap so they win) -->
+  <link href="style.css" rel="stylesheet">
 </head>
 
-<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-root-margin="0px 0px -55%" tabindex="0">
+<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-root-margin="0px 0px -60%" tabindex="0">
 
-  <a class="visually-hidden-focusable skip-link" href="#main">Skip to content</a>
+  <a class="skip-link visually-hidden-focusable" href="#main">Skip to content</a>
 
-  <!-- ============ NAVBAR ============ -->
-  <nav id="mainNav" class="navbar navbar-expand-lg sticky-top site-nav">
+  <!-- ================= NAVBAR ================= -->
+  <nav id="mainNav" class="site-nav navbar navbar-expand-lg sticky-top">
     <div class="container">
-      <a class="navbar-brand" href="#home">Vignesh A</a>
+      <a class="navbar-brand" href="#top">Vignesh A</a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
               data-bs-target="#navMenu" aria-controls="navMenu"
@@ -51,7 +53,7 @@
           <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
           <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
-            <button id="themeToggle" type="button" class="btn btn-sm btn-line">Dark mode</button>
+            <button id="themeToggle" type="button" class="btn btn-line btn-sm">Dark mode</button>
           </li>
         </ul>
       </div>
@@ -60,37 +62,36 @@
 
   <main id="main">
 
-    <!-- ============ HERO ============ -->
-    <header id="home" class="hero">
+    <!-- ================= HERO ================= -->
+    <header id="top" class="hero">
       <div class="container">
-        <div class="row align-items-center gy-5">
+        <div class="row align-items-center g-5">
 
           <div class="col-lg-7">
             <h1 class="hero-name hero-rise" style="--n:0">Vignesh A</h1>
             <p class="hero-role hero-rise" style="--n:1">Java Full Stack Developer</p>
             <p class="hero-lead hero-rise" style="--n:2">
-              I build and deploy full-stack web applications with Java, Spring Boot and PostgreSQL.
-              I'm looking for an entry-level Java Full Stack Developer role.
+              I build and deploy web applications with Spring Boot, PostgreSQL and Docker.
+              I am looking for an entry-level Java Full Stack role.
             </p>
 
             <div class="d-flex flex-wrap gap-2 hero-rise" style="--n:3">
-              <a href="#projects" class="btn btn-accent">See my projects</a>
-              <a href="Vignesh_A.pdf" class="btn btn-line" download>Download resume</a>
+              <a class="btn btn-accent" href="#projects">View projects</a>
+              <a class="btn btn-line" href="#contact">Contact me</a>
             </div>
 
             <p class="hero-links hero-rise" style="--n:4">
               <a href="https://github.com/vignes016-prog" target="_blank" rel="noopener">GitHub</a>
               <a href="https://linkedin.com/in/vignesh016" target="_blank" rel="noopener">LinkedIn</a>
-              <a href="#contact">Email</a>
+              <a href="mailto:vignes016@gmail.com">Email</a>
             </p>
           </div>
 
-          <div class="col-lg-5 circle" style="--n:2">
-            <!-- drop your photo at assets/images/profile.jpg, until then the initials show -->
+          <div class="col-lg-5 hero-rise" style="--n:3">
             <figure class="portrait">
               <span class="portrait-fallback" aria-hidden="true">VA</span>
-              <img src="WhatsApp Image 2026-09-18 at 8.41.40 PM.jpeg" alt="Portrait of Vignesh A"
-                   onerror="this.style.display='none'">
+              <!-- Put your photo at images/vignesh.jpg. If the file is missing, the initials show instead. -->
+              <img src="WhatsApp Image 2026-09-18 at 8.41.40 PM.jpeg" alt="Portrait of Vignesh A" onerror="this.remove()">
             </figure>
           </div>
 
@@ -98,304 +99,324 @@
       </div>
     </header>
 
-    <!-- ============ ABOUT ============ -->
+
+    <!-- ================= ABOUT ================= -->
     <section id="about" class="section">
       <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-3">
-            <h2 class="section-title">About</h2>
-          </div>
+        <div class="row g-5">
 
-          <div class="col-lg-9">
-            <div class="row gy-5">
-              <div class="col-md-7">
-                <div class="prose">
-                  <p>
-                    I'm a Java Full Stack Developer based in Chennai. I finished my B.Tech in Biotechnology
-                    in 2025 and completed Full Stack Java Developer training at Q Spider IT Training Institute in 2026.
-                  </p>
-                  <p>
-                    I build full-stack web applications with Spring Boot, Spring Security, Hibernate/JPA and
-                    PostgreSQL. I secure APIs with authentication and authorization, test them with Postman,
-                    and deploy with Docker. I follow a layered (MVC) structure so every part of the code has one job.
-                  </p>
-                  <p>
-                    I'm looking for an entry-level Java Full Stack Developer role where I can build clean,
-                    maintainable and scalable applications.
-                  </p>
-                </div>
-              </div>
-
-              <div class="col-md-5">
-                <dl class="facts">
-                  <div class="fact-row"><dt>Based in</dt><dd>Chennai, Tamil Nadu</dd></div>
-                  <div class="fact-row"><dt>Looking for</dt><dd>Entry-level Java Full Stack Developer role</dd></div>
-                  <div class="fact-row"><dt>Degree</dt><dd>B.Tech Biotechnology, 2025</dd></div>
-                  <div class="fact-row"><dt>Languages</dt><dd>Tamil , English </dd></div>
-                </dl>
-              </div>
+          <div class="col-lg-6">
+            <h2 class="section-title mb-4">About</h2>
+            <div class="prose">
+              <p>
+                I am a Java Full Stack Developer with a B.Tech in Biotechnology. I completed
+                full stack Java training in 2026 and have since built and deployed real
+                applications, from a hotel booking system to a peer-to-peer file transfer tool.
+              </p>
+              <p>
+                I like backend work most: designing clean layered APIs, securing them with
+                Spring Security, and getting them running in Docker. I write code that is
+                simple to read and easy to maintain.
+              </p>
             </div>
           </div>
+
+          <div class="col-lg-6">
+            <dl class="facts">
+              <div class="fact-row"><dt>Location</dt><dd>Chennai, Tamil Nadu, India</dd></div>
+              <div class="fact-row"><dt>Training</dt><dd>Full Stack Java Developer, Q Spider IT Training Institute (2026)</dd></div>
+              <div class="fact-row"><dt>Degree</dt><dd>B.Tech Biotechnology, PMIST (2021 to 2025)</dd></div>
+              <div class="fact-row"><dt>Looking for</dt><dd>Entry-level Java Full Stack Developer roles</dd></div>
+              <div class="fact-row"><dt>Languages</dt><dd>Tamil , English</dd></div>
+            </dl>
+          </div>
+
         </div>
       </div>
     </section>
 
-    <!-- ============ SKILLS ============ -->
+
+    <!-- ================= SKILLS ================= -->
     <section id="skills" class="section">
       <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-3">
-            <h2 class="section-title">Skills</h2>
-          </div>
+        <h2 class="section-title">Skills</h2>
+        <p class="tile-hint">Hover over a box, or tap it on a phone, to see the details.</p>
 
-          <div class="col-lg-9">
-            <div class="skill-list">
+        <div class="tile-grid" >
 
-              <div class="skill-row">
-                <h3>Languages</h3>
-                <ul class="chips">
-                  <li>Core Java</li>
-                  <li>Advanced Java</li>
-                  <li>SQL</li>
-                </ul>
+          <article class="tile" tabindex="0">
+            <div class="tile-front">
+              <h3>Languages</h3>
+              <p>Java and SQL</p>
               </div>
-
-              <div class="skill-row">
-                <h3>Backend</h3>
-                <ul class="chips">
-                  <li>Spring Boot</li>
-                  <li>Spring Core</li>
-                  <li>Spring MVC</li>
-                  <li>Spring Security</li>
-                  <li>Hibernate / JPA</li>
-                  <li>JDBC</li>
-                  <li>RESTful APIs</li>
-                </ul>
-              </div>
-
-              <div class="skill-row">
-                <h3>Frontend</h3>
-                <ul class="chips">
-                  <li>HTML5</li>
-                  <li>CSS3</li>
-                  <li>JavaScript</li>
-                  <li>Bootstrap</li>
-                  <li>Responsive web design</li>
-                </ul>
-              </div>
-
-              <div class="skill-row">
-                <h3>Databases</h3>
-                <ul class="chips">
-                  <li>PostgreSQL</li>
-                  <li>Oracle DB</li>
-                </ul>
-              </div>
-
-              <div class="skill-row">
-                <h3>Tools</h3>
-                <ul class="chips">
-                  <li>Git</li>
-                  <li>GitHub</li>
-                  <li>Docker</li>
-                  <li>Postman</li>
-                  <li>Render</li>
-                  <li>Eclipse</li>
-                  <li>VS Code</li>
-                </ul>
-              </div>
-
-              <div class="skill-row">
-                <h3>Concepts</h3>
-                <ul class="chips">
-                  <li>OOP</li>
-                  <li>MVC architecture</li>
-                  <li>Layered architecture</li>
-                  <li>REST API design</li>
-                  <li>Authentication and authorization</li>
-                  <li>CRUD operations</li>
-                  <li>API testing</li>
-                  <li>Debugging</li>
-                  <li>Socket programming</li>
-                  <li>Client-side form validation</li>
-                </ul>
-              </div>
-
+            <div class="tile-detail">
+              <h3>Languages</h3>
+              <ul class="chips">
+                <li>Core Java</li><li>Advanced Java</li><li>SQL</li><li>OOP</li>
+              </ul>
             </div>
-          </div>
+          </article>
+
+          <article class="tile" tabindex="0">
+            <div class="tile-front">
+              <h3>Backend</h3>
+              <p>Spring Boot and REST APIs</p>
+            </div>
+            <div class="tile-detail">
+              <h3>Backend</h3>
+              <ul class="chips">
+                <li>Spring Boot</li><li>Spring MVC</li><li>Spring Security</li>
+                <li>Hibernate / JPA</li><li>JDBC</li><li>RESTful APIs</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="tile" tabindex="0">
+            <div class="tile-front">
+              <h3>Frontend</h3>
+              <p>Responsive web pages</p>
+            </div>
+            <div class="tile-detail">
+              <h3>Frontend</h3>
+              <ul class="chips">
+                <li>HTML5</li><li>CSS3</li><li>JavaScript</li>
+                <li>Bootstrap</li><li>Responsive design</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="tile" tabindex="0">
+            <div class="tile-front">
+              <h3>Databases</h3>
+              <p>Relational databases</p>
+            </div>
+            <div class="tile-detail">
+              <h3>Databases</h3>
+              <ul class="chips">
+                <li>PostgreSQL</li><li>Oracle DB</li><li>SQL</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="tile" tabindex="0">
+            <div class="tile-front">
+              <h3>Tools</h3>
+              <p>Build, test and deploy</p>
+            </div>
+            <div class="tile-detail">
+              <h3>Tools</h3>
+              <ul class="chips">
+                <li>Git</li><li>GitHub</li><li>Docker</li><li>Postman</li>
+                <li>Render</li><li>Eclipse</li><li>VS Code</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="tile" tabindex="0">
+            <div class="tile-front">
+              <h3>Concepts</h3>
+              <p>How I structure applications</p>
+            </div>
+            <div class="tile-detail">
+              <h3>Concepts</h3>
+              <ul class="chips">
+                <li>MVC architecture</li><li>Authentication</li><li>Authorization</li>
+                <li>CRUD</li><li>API testing</li><li>Socket programming</li>
+              </ul>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>
 
-    <!-- ============ PROJECTS ============ -->
+
+    <!-- ================= PROJECTS ================= -->
     <section id="projects" class="section">
       <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-3">
-            <h2 class="section-title">Projects</h2>
-          </div>
+        <h2 class="section-title">Projects</h2>
+        <p class="tile-hint">Hover over a box, or tap it on a phone, to see the details.</p>
 
-          <div class="col-lg-9">
-            <div class="project-list">
+        <div class="tile-grid tile-grid-projects">
 
-              <!-- each project: name, what it is used for, tech used -->
-              <article class="project">
-                <h3 class="project-title">Hotel Management System</h3>
-                <div class="project-body">
-                  <p>Handles room booking, check-in/check-out and billing for a hotel.</p>
-                  <ul class="chips chips-small" aria-label="Tech used">
-                    <li>Java</li>
-                    <li>Spring Boot</li>
-                    <li>Spring Security</li>
-                    <li>Hibernate / JPA</li>
-                    <li>PostgreSQL</li>
-                    <li>RESTful APIs</li>
-                    <li>Render</li>
-                    <li>Postman</li>
-                  </ul>
-                </div>
-              </article>
-
-              <article class="project">
-                <h3 class="project-title">Sealsend</h3>
-                <div class="project-body">
-                  <p>Sends files directly from one person to another, with no third party or server seeing the file.</p>
-                  <ul class="chips chips-small" aria-label="Tech used">
-                    <li>Java</li>
-                    <li>Socket Programming</li>
-                    <li>Spring Boot</li>
-                    <li>RESTful APIs</li>
-                    <li>Web front end</li>
-                  </ul>
-                </div>
-              </article>
-
-              <article class="project">
-                <h3 class="project-title">E-Commerce Website</h3>
-                <div class="project-body">
-                  <p>A responsive shopping website front end with product listing, a cart and form validation.</p>
-                  <ul class="chips chips-small" aria-label="Tech used">
-                    <li>HTML5</li>
-                    <li>CSS3</li>
-                    <li>JavaScript</li>
-                  </ul>
-                </div>
-              </article>
-
+          <article class="tile" tabindex="0">
+            <div class="tile-front">
+              <!-- Put a screenshot at images/hotel.png. If the file is missing, the initials show instead. -->
+              <div class="tile-media">
+                <span class="tile-media-fallback" aria-hidden="true"></span>
+                <img src="341ae479-f233-4951-9949-749bf87b01cf.png" sizes="100px" alt="Screenshot of the Hotel Management System" onerror="this.remove()">
+              </div>
+              <h3>Hotel Management System</h3>
+              <p>Full-stack booking app, live on Render</p>
             </div>
-          </div>
+            <div class="tile-detail">
+              <h3>Hotel Management System</h3>
+              <ul class="detail-list">
+                <li>Room booking, check-in, check-out and billing through REST APIs.</li>
+                <li>APIs secured with Spring Security for authentication and authorization.</li>
+                <li>Containerized with Docker and deployed on Render with a live PostgreSQL database.</li>
+              </ul>
+              <ul class="chips">
+                <li>Spring Boot</li><li>Spring Security</li><li>JPA</li><li>PostgreSQL</li><li>Docker</li>
+              </ul>
+              <p class="tile-links">
+                <a href="https://hotelmanagementsystem3.onrender.com" target="_blank" rel="noopener">Live demo</a>
+                <!-- Replace with the exact repository URL -->
+                <a href="https://github.com/vignes016-prog" target="_blank" rel="noopener">GitHub</a>
+              </p>
+            </div>
+          </article>
+
+          <article class="tile" tabindex="0">
+            <div class="tile-front">
+              <!-- Put a screenshot at images/sealsend.png. If the file is missing, the initials show instead. -->
+              <div class="tile-media">
+                <span class="tile-media-fallback" aria-hidden="true"></span>
+                <img src="seal.png" alt="Screenshot of SealSend" onerror="this.remove()">
+              </div>
+              <h3>SealSend</h3>
+              <p>Peer-to-peer file transfer</p>
+            </div>
+            <div class="tile-detail">
+              <h3>SealSend</h3>
+              <ul class="detail-list">
+                <li>Sends files directly from sender to receiver over Java sockets, so no server ever sees the file.</li>
+                <li>Spring Boot APIs handle peer discovery and session management.</li>
+                <li>A web front end starts transfers and shows their progress.</li>
+              </ul>
+              <ul class="chips">
+                <li>Java</li><li>Sockets</li><li>Spring Boot</li><li>REST APIs</li>
+              </ul>
+              <p class="tile-links">
+                <!-- Replace with the exact repository URL -->
+                <a href="https://github.com/vignes016-prog" target="_blank" rel="noopener">GitHub</a>
+              </p>
+            </div>
+          </article>
+
+          <article class="tile" tabindex="0">
+            <div class="tile-front">
+              <!-- Put a screenshot at images/ecommerce.png. If the file is missing, the initials show instead. -->
+              <div class="tile-media">
+                <span class="tile-media-fallback" aria-hidden="true"></span>
+                <img src="87055558-1733-4d1c-8c82-af2f0a37ad6f.png" alt="Screenshot of the E-Commerce Website" onerror="this.remove()">
+              </div>
+              <h3>E-Commerce Website</h3>
+              <p>Responsive front end</p>
+            </div>
+            <div class="tile-detail">
+              <h3>E-Commerce Website</h3>
+              <ul class="detail-list">
+                <li>Product listing and a shopping cart interface.</li>
+                <li>Client-side form validation.</li>
+                <li>Responsive layout that works from phone to desktop.</li>
+              </ul>
+              <ul class="chips">
+                <li>HTML5</li><li>CSS3</li><li>JavaScript</li>
+              </ul>
+              <p class="tile-links">
+                <!-- Replace with the exact repository URL -->
+                <a href="https://github.com/vignes016-prog" target="_blank" rel="noopener">GitHub</a>
+              </p>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>
 
-    <!-- ============ EDUCATION ============ -->
+
+    <!-- ================= EDUCATION ================= -->
     <section id="education" class="section">
       <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-3">
-            <h2 class="section-title">Education</h2>
-          </div>
+        <h2 class="section-title mb-5">Education</h2>
 
-          <div class="col-lg-9">
-            <ol class="timeline">
-              <li class="timeline-item">
-                <p class="timeline-when">School</p>
-                <h3>Secondary and higher secondary</h3>
-                <p>
-                  10th at Govt. High School, Pallavarayan Pathai, Pudukkottai.
-                  11th and 12th at Punitha Arokia Annai Hr. Sec. School, Pudukkottai.
-                </p>
-              </li>
-
-              <li class="timeline-item">
-                <p class="timeline-when">June 2021 to May 2025</p>
-                <h3>B.Tech in Biotechnology</h3>
-                <p>Periyar Maniammai Institute of Science &amp; Technology (PMIST). CGPA 7.8 / 10.</p>
-              </li>
-
-              <li class="timeline-item">
-                <p class="timeline-when">2026</p>
-                <h3>Full Stack Java Developer training</h3>
-                <p>
-                  Q Spider IT Training Institute, Chennai. Covered Core Java, Advanced Java, Spring Core,
-                  Spring Boot, Hibernate, JDBC, SQL, PostgreSQL, Oracle DB, HTML, CSS, JavaScript, Git,
-                  RESTful API development and Postman API testing.
-                </p>
-              </li>
-            </ol>
-          </div>
-        </div>
+        <ol class="timeline">
+          <li class="timeline-item">
+            <p class="timeline-when">2026</p>
+            <h3>Full Stack Java Developer</h3>
+            <p>Q Spider IT Training Institute, Chennai. Core Java, Advanced Java, Spring Boot, Hibernate, JDBC, PostgreSQL, Oracle DB, REST API development and Postman testing.</p>
+          </li>
+          <li class="timeline-item">
+            <p class="timeline-when">June 2021 to May 2025</p>
+            <h3>B.Tech in Biotechnology</h3>
+            <p>Periyar Maniammai Institute of Science and Technology (PMIST). CGPA 7.8 out of 10.</p>
+          </li>
+          <li class="timeline-item">
+            <p class="timeline-when">Higher Secondary (11th and 12th)</p>
+            <h3>Punitha Arokia Annai Hr. Sec. School</h3>
+            <p>Punalvasal,Thanjavur.</p>
+          </li>
+          <li class="timeline-item">
+            <p class="timeline-when">Secondary (10th)</p>
+            <h3>Govt. High School, Pallavarayan Pathai</h3>
+            <p>Pudukkottai.</p>
+          </li>
+        </ol>
       </div>
     </section>
 
-    <!-- ============ CONTACT ============ -->
+
+    <!-- ================= CONTACT ================= -->
     <section id="contact" class="section">
       <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-3">
+        <div class="row g-5">
+
+          <div class="col-lg-5">
             <h2 class="section-title">Contact</h2>
+            <p class="prose mt-3">
+              I am open to entry-level Java Full Stack Developer roles and internships.
+              Send me a message and I will reply as soon as I can.
+            </p>
+
+            <ul class="contact-list">
+              <li><span>Email</span><a href="mailto:vignes016@gmail.com">vignes016@gmail.com</a></li>
+              <li><span>LinkedIn</span><a href="https://linkedin.com/in/vignesh016" target="_blank" rel="noopener">linkedin.com/in/vignesh016</a></li>
+              <li><span>GitHub</span><a href="https://github.com/vignes016-prog" target="_blank" rel="noopener">github.com/vignes016-prog</a></li>
+              <li><span>Location</span>Chennai, Tamil Nadu, India</li>
+            </ul>
           </div>
 
-          <div class="col-lg-9">
-            <div class="row gy-5">
-
-              <div class="col-md-5">
-                <p class="prose">
-                  I'm open to entry-level Java Full Stack Developer roles.
-                  Email is the quickest way to reach me.
-                </p>
-                <ul class="contact-list">
-                  <li><span>Email</span><a href="mailto:vignes016@gmail.com">vignes016@gmail.com</a></li>
-                  <li><span>Phone</span><a href="tel:+916374097307">+91 63740 97307</a></li>
-                  <li><span>GitHub</span><a href="https://github.com/vignes016-prog" target="_blank" rel="noopener">github.com/vignes016-prog</a></li>
-                  <li><span>LinkedIn</span><a href="https://linkedin.com/in/vignesh016" target="_blank" rel="noopener">linkedin.com/in/vignesh016</a></li>
-                </ul>
+          <div class="col-lg-7">
+            <form id="contactForm" novalidate>
+              <div class="mb-3">
+                <label for="name" class="form-label">Your name</label>
+                <input type="text" class="form-control" id="name" name="name" autocomplete="name" required>
+                <div class="invalid-feedback">Please enter your name.</div>
               </div>
 
-              <div class="col-md-7">
-                <form id="contactForm" novalidate>
-                  <div class="mb-3">
-                    <label for="name" class="form-label">Your name</label>
-                    <input type="text" class="form-control" id="name" required>
-                    <div class="invalid-feedback">Please enter your name.</div>
-                  </div>
-
-                  <div class="mb-3">
-                    <label for="email" class="form-label">Your email</label>
-                    <input type="email" class="form-control" id="email" required>
-                    <div class="invalid-feedback">Please enter a valid email address.</div>
-                  </div>
-
-                  <div class="mb-3">
-                    <label for="message" class="form-label">Message</label>
-                    <textarea class="form-control" id="message" rows="5" required></textarea>
-                    <div class="invalid-feedback">Please write a short message.</div>
-                  </div>
-
-                  <button type="submit" class="btn btn-accent">Send message</button>
-                  <p id="formNote" class="form-note" aria-live="polite">
-                    This opens your email app with the message filled in.
-                  </p>
-                </form>
+              <div class="mb-3">
+                <label for="email" class="form-label">Your email</label>
+                <input type="email" class="form-control" id="email" name="email" autocomplete="email" required>
+                <div class="invalid-feedback">Please enter a valid email address.</div>
               </div>
 
-            </div>
+              <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                <div class="invalid-feedback">Please write a message.</div>
+              </div>
+
+              <button type="submit" class="btn btn-accent">Send message</button>
+              <p id="formNote" class="form-note" role="status" aria-live="polite"></p>
+            </form>
           </div>
+
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- ============ FOOTER ============ -->
+  <!-- ================= FOOTER ================= -->
   <footer class="site-footer">
     <div class="container d-flex flex-wrap justify-content-between gap-2">
-      <span>&copy; <span id="year">2026</span> Vignesh A</span>
-      <span>Built with HTML, CSS, JavaScript and Bootstrap</span>
+      <span>&copy; <span id="year"></span> Vignesh A</span>
+      <span>Java Full Stack Developer, Chennai</span>
     </div>
   </footer>
 
-  <!-- bootstrap js (needed for the mobile menu and scroll highlighting) -->
+  <!-- Bootstrap bundle must load BEFORE your script -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="script.js"></script>
 </body>
