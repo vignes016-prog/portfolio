@@ -61,7 +61,7 @@ An internet connection is needed because Bootstrap and the fonts load from a CDN
 2. Open the repository, then go to **Settings > Pages**.
 3. Under **Build and deployment**, choose **Deploy from a branch**.
 4. Select the `main` branch and the `/ (root)` folder, then click **Save**.
-5. After a minute or two the site is live at `https://vignes016-prog.github.io/<repository-name>/`.
+5. After a minute or two the site is live
 
 ## Contact
 
